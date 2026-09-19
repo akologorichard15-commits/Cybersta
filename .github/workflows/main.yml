@@ -1,0 +1,29 @@
+name: Build Cyberstar APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    name: Build Cyberstar for Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build APK with Buildozer
+        uses: ArtemSBulgakov/buildozer-action@v1
+        id: buildozer
+        with:
+          workdir: .
+          buildozer_version: stable
+
+      - name: Upload Cyberstar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cyberstar-APK
+          path: ${{ steps.buildozer.outputs.filename }}
