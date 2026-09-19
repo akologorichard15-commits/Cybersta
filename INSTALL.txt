@@ -1,0 +1,3 @@
+Cyberstar should ultimately be installed as an APK.
+This project is ready for APK compilation; it is not itself the APK.
+Use the included GitHub Actions workflow to build it without Pydroid 3.
